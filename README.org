@@ -1,15 +1,16 @@
 * Jetbrains IDEs and Emacs are best friend!
 ** Support IDEs
-- Android Studio: `studio'
-- AppCode: `appcode'
-- CLion: `clion'
-- Gogland: `gogland'
-- IntelliJ IDEA: `idea'
-- PhpStorm: `pstorm'
-- PyCharm: `charm'
-- Rider: `rider'
-- RubyMine: `mine'
-- WebStorm: `wstorm'
+|----------------+-----------|
+| Android Studio | ~studio~  |
+| AppCode        | ~appcode~ |
+| CLion          | ~clion~   |
+| Gogland        | ~gogland~ |
+| IntelliJ IDEA  | ~idea~    |
+| PhpStorm       | ~pstorm~  |
+| PyCharm        | ~charm~   |
+| Rider          | ~rider~   |
+| RubyMine       | ~mine~    |
+| WebStorm       | ~wstorm~  |
 ** Setup
 Please run ~Tools > Create Command-line Launcher...~ by menu in your IDE.
 *** .dir-locals.el
