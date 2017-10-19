@@ -20,6 +20,7 @@ I encourage you to create a ~.dir-locals.el~ file in your project.
 #+END_SRC
 *** Interoperability
 You can return to Emacs from the IDE.
+
 Please see follows article: [[https://developer.atlassian.com/blog/2015/03/emacs-intellij/][Quick Tip: Getting Emacs and IntelliJ to play together]]
 ** FAQ
 *** Q.  Do you support proprietary software?
