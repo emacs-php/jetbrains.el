@@ -127,20 +127,25 @@
                  return c))))
 
 ;;;###autoload
-(defun jetbrains-open-project (ide)
-  "Open project in JetBrains IDE."
+(defun jetbrains-open-project (ide ide-root)
+  "Open project in JetBrains IDE by `IDE' and `IDE-ROOT'."
   (interactive
    (list (or jetbrains-ide
              (completing-read "Select IDE: "
                               (cl-loop for a in jetbrains-known-ide-alist
                                        if (executable-find (symbol-name (cdr a)))
-                                       collect (car a))))))
-  (let ((ide-helper (jetbrains-ide-symbol ide))
-        (ide-root (locate-dominating-file (f-dirname buffer-file-name) ".idea")))
-    (shell-command
-     (apply #'format "%s %s"
-            (mapcar #'shell-quote-argument
-                    (list (symbol-name ide-helper) (f-expand ide-root)))))))
+                                       collect (car a))))
+         (or (locate-dominating-file (f-dirname buffer-file-name) ".idea")
+             (let ((dir (read-file-name "Project root: " default-directory)))
+               (if (f-dir? dir)
+                   dir
+                 (f-dirname dir))))))
+  (let ((ide-helper (jetbrains-ide-symbol ide)))
+    (when ide-helper
+      (shell-command
+       (apply #'format "%s %s"
+              (mapcar #'shell-quote-argument
+                      (list (symbol-name ide-helper) (f-expand ide-root))))))))
 
 ;;;###autoload
 (defun jetbrains-open-buffer-file ()
@@ -148,10 +153,11 @@
   (interactive)
   (when buffer-file-name
     (let ((ide-helper (jetbrains--detect-ide buffer-file-name major-mode)))
-      (shell-command
+      (when ide-helper
+        (shell-command
          (apply #'format "%s %s"
                 (mapcar #'shell-quote-argument
-                        (list ide-helper buffer-file-name)))))))
+                        (list ide-helper buffer-file-name))))))))
 
 (provide 'jetbrains)
 ;;; jetbrains.el ends here
