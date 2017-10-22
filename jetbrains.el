@@ -104,8 +104,7 @@
     ((css-mode html-mode nxml-mode scss-mode sql-mode web-mode)
      . (charm mine pstorm wstrom))))
 
-(defvar jetbrains-ide nil)
-(make-local-variable 'jetbrains-ide)
+(defvar-local jetbrains-ide nil)
 (put 'jetbrains-ide 'safe-local-variable #'jetbrains-ide-symbol)
 
 (defun jetbrains-ide-symbol (name)
