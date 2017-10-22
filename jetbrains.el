@@ -81,7 +81,7 @@
 
 (defgroup jetbrains nil "JetBrains IDE bridge"
   :prefix "jetbrains-"
-  :group 'tool)
+  :group 'tools)
 
 (defvar jetbrains-known-ide-alist
   '(("Android Studio" . studio)
