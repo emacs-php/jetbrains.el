@@ -6,7 +6,7 @@
 ;; Created: 19 Oct 2017
 ;; Version: 0.0.1
 ;; Keywords: tools php
-;; Package-Requires: ((emacs "24") (f "0.17"))
+;; Package-Requires: ((emacs "24.3") (cl-lib "0.5") (f "0.17"))
 ;; URL: https://github.com/emacs-php/jetbrains.el
 
 ;; This file is NOT part of GNU Emacs.
@@ -76,6 +76,7 @@
 ;;
 
 ;;; Code:
+(require 'cl-lib)
 (require 'f)
 
 (defgroup jetbrains nil "JetBrains IDE bridge"
