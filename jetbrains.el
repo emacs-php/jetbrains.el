@@ -157,7 +157,7 @@
         (shell-command
          (apply #'format "%s %s"
                 (mapcar #'shell-quote-argument
-                        (list ide-helper buffer-file-name))))))))
+                        (list (symbol-name ide-helper) buffer-file-name))))))))
 
 (provide 'jetbrains)
 ;;; jetbrains.el ends here
