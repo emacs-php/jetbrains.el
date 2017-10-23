@@ -104,8 +104,10 @@
     ((css-mode html-mode nxml-mode scss-mode sql-mode web-mode)
      . (charm mine pstorm wstrom))))
 
-(defvar-local jetbrains-ide nil)
-(put 'jetbrains-ide 'safe-local-variable #'jetbrains-ide-symbol)
+;;;###autoload
+(progn
+  (defvar-local jetbrains-ide nil)
+  (put 'jetbrains-ide 'safe-local-variable #'jetbrains-ide-symbol))
 
 (defun jetbrains-ide-symbol (name)
   "Return symbol of IDE by `NAME'."
