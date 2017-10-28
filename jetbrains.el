@@ -145,9 +145,10 @@
   (let ((ide-helper (jetbrains-ide-symbol ide)))
     (when ide-helper
       (shell-command
-       (apply #'format "%s %s"
-              (mapcar #'shell-quote-argument
-                      (list (symbol-name ide-helper) (f-expand ide-root))))))))
+       (mapconcat #'shell-quote-argument
+                  (list (symbol-name ide-helper)
+                        (f-expand ide-root))
+                  " ")))))
 
 ;;;###autoload
 (defun jetbrains-open-buffer-file ()
@@ -157,9 +158,12 @@
     (let ((ide-helper (jetbrains--detect-ide buffer-file-name major-mode)))
       (when ide-helper
         (shell-command
-         (apply #'format "%s %s"
-                (mapcar #'shell-quote-argument
-                        (list (symbol-name ide-helper) buffer-file-name))))))))
+         (mapconcat #'shell-quote-argument
+                    (list (symbol-name ide-helper)
+                          buffer-file-name
+                          "--line"
+                          (int-to-string (line-number-at-pos)))
+                    " "))))))
 
 (provide 'jetbrains)
 ;;; jetbrains.el ends here
