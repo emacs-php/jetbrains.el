@@ -165,5 +165,13 @@
                           (int-to-string (line-number-at-pos)))
                     " "))))))
 
+;;;###autoload
+(defun jetbrains-create-dir-local-file ()
+  "Create project file `.dir-locals.el' for `jetbrains.el'."
+  (interactive)
+  (add-dir-local-variable nil 'jetbrains-ide
+                          (completing-read "Select JetBrains IDE: "
+                                           (mapcar 'car jetbrains-known-ide-alist))))
+
 (provide 'jetbrains)
 ;;; jetbrains.el ends here
