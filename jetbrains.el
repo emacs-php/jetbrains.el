@@ -107,7 +107,7 @@
 ;;;###autoload
 (progn
   (defvar-local jetbrains-ide nil)
-  (put 'jetbrains-ide 'safe-local-variable #'jetbrains-ide-symbol))
+  (put 'jetbrains-ide 'safe-local-variable 'jetbrains-ide-symbol))
 
 (defun jetbrains-ide-symbol (name)
   "Return symbol of IDE by `NAME'."
