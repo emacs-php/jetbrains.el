@@ -1,4 +1,6 @@
 .cask
+.eask
 *.elc
+/dist
 /flycheck_*
 /vendor/
