@@ -1,3 +1,5 @@
+;; -*- mode: eask; lexical-binding: t -*-
+
 (package "jetbrains"
          "0.0.1"
          "JetBrains IDE bridge")
